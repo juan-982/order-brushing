@@ -41,11 +41,11 @@ public class Shop {
 		return orders;
 	}
 	
-	public void addBrushingUser(String userid) {
-		brushingUsers.add(Long.parseLong(userid));
+	public void addBrushingUsers(List<Long> userids) {
+		brushingUsers.addAll(userids);
 	}
 	
-	public String getBrushingUsers() {
+	public String printBrushingUsers() {
 		if (brushingUsers.isEmpty()) return "0";
 		else {
 			
@@ -58,7 +58,7 @@ public class Shop {
 		}
 	}
 	
-	class OrderComparator implements Comparator<Order> {
+	private class OrderComparator implements Comparator<Order> {
 		public int compare(Order o1, Order o2) {
 			return o1.getEventTime().compareTo(o2.getEventTime());
 		}

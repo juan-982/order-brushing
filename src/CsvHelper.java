@@ -36,14 +36,16 @@ public class CsvHelper {
                 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
                 
-                Order order = new Order(orderDetails[0], orderDetails[1], orderDetails[2], LocalDateTime.parse(orderDetails[3], formatter));
+                String shopid = orderDetails[1];
                 
-                Shop shop = shopMap.get(order.getShopid());
+                Shop shop = shopMap.get(shopid);
                 
                 if (shop == null) {
-                	shop = new Shop(order.getShopid());
-                	shopMap.put(order.getShopid(), shop);
+                	shop = new Shop(shopid);
+                	shopMap.put(shopid, shop);
                 }
+                
+                Order order = new Order(orderDetails[0], shop, Long.parseLong(orderDetails[2]), LocalDateTime.parse(orderDetails[3], formatter));
                 
                 shop.addOrder(order);
             }
@@ -69,7 +71,7 @@ public class CsvHelper {
 		dataLines.add(new String[] { "shopid", "userid" });
 		
 		for (Shop shop : shops) {
-			dataLines.add(new String[] { shop.getShopId(), shop.getBrushingUsers() });
+			dataLines.add(new String[] { shop.getShopId(), shop.printBrushingUsers() });
 		}
 		
 		File csvOutputFile = new File(filename);
