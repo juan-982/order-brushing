@@ -2,15 +2,15 @@ import java.time.LocalDateTime;
 
 public class Order {
 	private String orderid;
-	private String shopid;
-	private String userid;
+	private Shop shop;
+	private long userid;
 	private LocalDateTime eventTime;
 	private Order previousOrder;
 	private Order nextOrder;
 	
-	public Order(String orderid, String shopid, String userid, LocalDateTime eventTime) {
+	public Order(String orderid, Shop shop, long userid, LocalDateTime eventTime) {
 		this.setOrderid(orderid);
-		this.setShopid(shopid);
+		this.setShop(shop);
 		this.setUserid(userid);
 		this.setEventTime(eventTime);
 	}
@@ -23,12 +23,12 @@ public class Order {
 		this.orderid = orderid;
 	}
 
-	public String getShopid() {
-		return shopid;
+	public Shop getShop() {
+		return shop;
 	}
 
-	public void setShopid(String shopid) {
-		this.shopid = shopid;
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 
 	public LocalDateTime getEventTime() {
@@ -39,11 +39,11 @@ public class Order {
 		this.eventTime = eventTime;
 	}
 
-	public String getUserid() {
+	public long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(long userid) {
 		this.userid = userid;
 	}
 	

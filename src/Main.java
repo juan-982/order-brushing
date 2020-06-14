@@ -51,11 +51,12 @@ public class Main {
 					// Order 4: 0120
 					// Orders 1 and 4 are not within the same hour 
 					// Hence orders 2 and 3 can be within the same hour without orders 1 and 4 (0019 to 0119)
-					Evaluator.evaluateOrders(shop, ordersWithinHour);
+					if (Evaluator.identifyBrushingPeriod(ordersWithinHour)) 
+						shop.addBrushedOrders(ordersWithinHour);
 				}
 			}
 			
-			Evaluator.evaluateBrushedOrders(shop);
+			shop.addBrushingUsers(Evaluator.identifyBrushingUsers(shop));
 		}
 		
 		try {
