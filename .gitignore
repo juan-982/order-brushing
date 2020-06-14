@@ -1,3 +1,6 @@
+.DS_STORE
+.classpath
+
 # Compiled class file
 *.class
 
